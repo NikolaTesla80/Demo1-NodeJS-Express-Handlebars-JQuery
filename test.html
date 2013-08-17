@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>jQuery Hello World</title>
+
+<script type="text/javascript" src="/jquery/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="/handlebars/handlebars-1.0.rc.1.min.js"></script>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+function L_CompileTemplate()
+{
+ var source   = $("#some-template").html();
+  var template = Handlebars.compile(source);
+  var data = { users: [
+      {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
+      {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
+      {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
+    ]};
+  $("#content-placeholder").html(template(data));
+}
+
+$(document).ready(function(){
+ $("#msgid").html("This is Hello World by JQuery");
+ 
+ L_CompileTemplate(); 
+ //alert("Source = " + source);
+
+});
+</script>
+
+
+This is Hello World by HTML
+
+<div id="msgid">
+</div>
+
+<div id="temp1">
+<p> temp1 </p>
+</div>
+
+<div id="temp2">
+<p> temp2 </p>
+</div>
+
+<div id="temp3">
+<p> temp3 </p>
+</div>
+
+
+<div id="content-placeholder">
+<script id="some-template" type="text/x-handlebars-template">
+  <table>
+    <thead>
+      <th>Username</th>
+      <th>Real Name</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+      {{#users}}
+        <tr>
+          <td>{{username}}</td>
+          <td>{{firstName}} {{lastName}}</td>
+          <td>{{email}}</td>
+        </tr>
+      {{/users}}
+    </tbody>
+  </table>
+</script>
+
+</div>
+
+</body>
+</html>
